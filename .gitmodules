@@ -1,0 +1,6 @@
+[submodule "scm-harvester"]
+	path = scm-harvester
+	url = https://github.com/SmartDeveloperHub/sdh-scm-harvester-docker
+[submodule "org-harvester"]
+	path = org-harvester
+	url = https://github.com/SmartDeveloperHub/sdh-org-harvester-docker
