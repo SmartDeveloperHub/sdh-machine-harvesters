@@ -13,6 +13,7 @@ scmharvester:
   domainname: localdomain
   environment:
     - TERM=xterm
+    - GITLAB_ENHANCER=""
   ports:
     - "9000:80"
 
