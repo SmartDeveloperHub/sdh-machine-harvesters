@@ -1,0 +1,31 @@
+orgharvester:
+  build: org-harvester
+  hostname: orgharvester
+  domainname: localdomain
+  environment:
+    - TERM=xterm
+  ports:
+    - "8000:80"
+
+scmharvester:
+  build: scm-harvester
+  hostname: scmharvester
+  domainname: localdomain
+  environment:
+    - TERM=xterm
+  ports:
+    - "9000:80"
+
+nginx:
+  build: nginx
+  hostname: nginx
+  domainname: localdomain
+  links:
+    - scmharvester:scmharvester
+    - orgharvester:orgharvester
+  environment:
+    - TERM=xterm
+  ports:
+    - "80:80"
+  volumes:
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
