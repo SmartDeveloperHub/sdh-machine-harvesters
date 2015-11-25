@@ -1,4 +1,6 @@
 #!/bin/sh
 /usr/lib/glenhancer/.env/bin/pip install gl-enhancer
-/usr/lib/glenhancer/.env/bin/python /usr/lib/glenhancer/.env/bin/enhancer &
+/usr/lib/glenhancer/.env/bin/pip install gunicorn
+cp /usr/lib/glenhancer/.env/bin/enhancer /usr/lib/glenhancer/.env/bin/enhancer.py
+/usr/lib/glenhancer/.env/bin/python /usr/lib/glenhancer/.env/bin/gunicorn enhancer:enhancer.app -w 4 -b 0.0.0.0:$ENH_LISTEN_PORT
 sleep 1
