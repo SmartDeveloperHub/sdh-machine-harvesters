@@ -36,6 +36,7 @@ orgharvester:
   build: org-harvester
   hostname: orgharvester
   domainname: localdomain
+  mem_limit: 1024m
   environment:
     - TERM=xterm
   ports:
