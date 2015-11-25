@@ -1,3 +1,37 @@
+glredis:
+  image: sameersbn/redis:latest
+  hostname: glredis
+  domainname: localdomain
+  restart: always  
+
+glenhancer:
+  build: gl-enhancer
+  hostname: glenhancer
+  domainname: localdomain
+  links:
+    - glredis:glredis
+  environment:
+    - TERM=xterm
+    - ENH_LISTEN_PORT=5000
+    - ENH_REDIS_IP=glredis
+    - ENH_REDIS_PORT=6379
+
+glcollector:
+  build: gl-collector
+  links:
+    - glredis:glredis
+  environment:
+    - TERM=xterm
+    - COLL_GITLAB_PROT=http
+    - COLL_GITLAB_IP=
+    - COLL_GITLAB_PORT=80
+    - COLL_GITLAB_USER=root
+    - COLL_GITLAB_PASS=
+    - COLL_GITLAB_VERIFY_SSL=0
+    - COLL_REDIS_IP=glredis
+    - COLL_REDIS_PORT=6379
+    - COLL_DELAY=60
+
 orgharvester:
   build: org-harvester
   hostname: orgharvester
@@ -11,9 +45,11 @@ scmharvester:
   build: scm-harvester
   hostname: scmharvester
   domainname: localdomain
+  links:
+    - glenhancer:glenhancer
   environment:
     - TERM=xterm
-    - GITLAB_ENHANCER=
+    - GITLAB_ENHANCER=http://glenhancer:5000/api
   ports:
     - "8001:80"
 
@@ -21,9 +57,10 @@ ciharvester:
   image: smartdeveloperhub/sdh-ci-harvester-docker:0.2.0
   hostname: ciharvester
   domainname: localdomain
+  mem_limit: 1024m
   environment:
     - TERM=xterm
-    - TARGET=
+    - TARGET=http://
     - HTTP_PORT=80
     - HTTP_HOST=ciharvester
     - BROKER_PORT=5672
