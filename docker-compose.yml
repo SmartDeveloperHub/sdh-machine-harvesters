@@ -13,9 +13,23 @@ scmharvester:
   domainname: localdomain
   environment:
     - TERM=xterm
-    - GITLAB_ENHANCER=""
+    - GITLAB_ENHANCER=
   ports:
-    - "9000:80"
+    - "8001:80"
+
+ciharvester:
+  image: smartdeveloperhub/sdh-ci-harvester-docker:0.2.0
+  hostname: ciharvester
+  domainname: localdomain
+  environment:
+    - TERM=xterm
+    - TARGET=
+    - HTTP_PORT=80
+    - HTTP_HOST=ciharvester
+    - BROKER_PORT=5672
+    - BROKER_HOST=
+  ports:
+    - 8002:80
 
 nginx:
   build: nginx
@@ -24,6 +38,7 @@ nginx:
   links:
     - scmharvester:scmharvester
     - orgharvester:orgharvester
+    - ciharvester:ciharvester
   environment:
     - TERM=xterm
   ports:
