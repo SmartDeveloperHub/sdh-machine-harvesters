@@ -32,7 +32,7 @@ glcollector:
     - COLL_DELAY=60
 
 orgharvester:
-  build: org-harvester
+  image: smartdeveloperhub/sdh-org-harvester-docker:0.1.0
   hostname: orgharvester
   domainname: localdomain
   mem_limit: 1024m
@@ -42,7 +42,7 @@ orgharvester:
     - "8000:80"
 
 scmharvester:
-  build: scm-harvester
+  image: smartdeveloperhub/sdh-scm-harvester-docker:0.2.0
   hostname: scmharvester
   domainname: localdomain
   links:
@@ -60,11 +60,11 @@ ciharvester:
   mem_limit: 1024m
   environment:
     - TERM=xterm
-    - TARGET=http://
+    - TARGET=http://vps164.cesvima.upm.es:8000/
     - HTTP_PORT=80
     - HTTP_HOST=ciharvester
     - BROKER_PORT=5672
-    - BROKER_HOST=
+    - BROKER_HOST=138.4.249.224
   ports:
     - 8002:80
 
