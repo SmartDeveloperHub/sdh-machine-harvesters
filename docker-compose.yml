@@ -1,8 +1,7 @@
 glredis:
-  image: sameersbn/redis:latest
+  image: redis
   hostname: glredis
   domainname: localdomain
-  restart: always  
 
 glenhancer:
   build: gl-enhancer
@@ -23,9 +22,9 @@ glcollector:
   environment:
     - TERM=xterm
     - COLL_GITLAB_PROT=http
-    - COLL_GITLAB_IP=
+    - COLL_GITLAB_IP=http://
     - COLL_GITLAB_PORT=80
-    - COLL_GITLAB_USER=root
+    - COLL_GITLAB_USER=
     - COLL_GITLAB_PASS=
     - COLL_GITLAB_VERIFY_SSL=0
     - COLL_REDIS_IP=glredis
