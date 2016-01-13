@@ -4,7 +4,7 @@ glredis:
   domainname: localdomain
 
 glenhancer:
-  image: image: smartdeveloperhub/sdh-gl-enhancer-docker
+  image: smartdeveloperhub/sdh-gl-enhancer-docker
   hostname: glenhancer
   domainname: localdomain
   links:
@@ -16,7 +16,7 @@ glenhancer:
     - ENH_REDIS_PORT=6379
 
 glcollector:
-  image: image: smartdeveloperhub/sdh-gl-collector-docker
+  image: smartdeveloperhub/sdh-gl-collector-docker
   links:
     - glredis:glredis
   environment:
