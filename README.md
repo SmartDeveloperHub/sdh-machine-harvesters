@@ -47,6 +47,18 @@ If you want to change port redirection or configuration, we suggest you:
 3. Build (if you have changed any file or physical configuration)
 4. Start
 
+### Docker - Environment:
+
+* Gitlab Configuration
+|Variable|Description|Example|
+|:---------|:----------|:----------|
+|COLL_GITLAB_PROT|Protocol|http or https|
+|COLL_GITLAB_IP|URL or IP address|http://... or https://...|
+|COLL_GITLAB_PORT|Port|80 or 443 or other|
+|COLL_GITLAB_USER|User (admin permission)|root or other|
+|COLL_GITLAB_PASS|Password|user_password_test|
+|COLL_GITLAB_VERIFY_SSL|Verify ssl certificate|0 or 1|
+
 ### Harvesters - Usage:
 
 Before deployment, you need to deploy first SCM improvements.
