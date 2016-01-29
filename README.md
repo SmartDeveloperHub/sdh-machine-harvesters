@@ -49,7 +49,8 @@ If you want to change port redirection or configuration, we suggest you:
 
 ### Docker - Environment:
 
-* Gitlab Configuration
+* Gitlab Configuration (glcollector)
+
 |Variable|Description|Example|
 |:---------|:----------|:----------|
 |COLL_GITLAB_PROT|Protocol|http or https|
@@ -57,7 +58,19 @@ If you want to change port redirection or configuration, we suggest you:
 |COLL_GITLAB_PORT|Port|80 or 443 or other|
 |COLL_GITLAB_USER|User (admin permission)|root or other|
 |COLL_GITLAB_PASS|Password|user_password_test|
-|COLL_GITLAB_VERIFY_SSL|Verify ssl certificate|0 or 1|
+|COLL_GITLAB_VERIFY_SSL|Verify (auto-signed) SSL|0 or 1|
+
+Note: if user has only read permission for few repositories instead of root permission, only you could collect that information.
+
+* Jenkins Configuration (ciharvester)
+
+|Variable|Description|Example|
+|:---------|:----------|:----------|
+|TARGET|URL or IP address|http://... or https://...|
+|HTTP_PORT|Port|80 or 443 or other|
+|BROKER_PORT|Rabbit MQ Port|5672 or other|
+|BROKER_HOST|Rabbit URL or IP address|127.0.0.1 or other|
+
 
 ### Harvesters - Usage:
 
