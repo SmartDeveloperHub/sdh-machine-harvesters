@@ -54,7 +54,7 @@ If you want to change port redirection or configuration, we suggest you:
 |Variable|Description|Example|
 |:---------|:----------|:----------|
 |COLL_GITLAB_PROT|Protocol|http or https|
-|COLL_GITLAB_IP|URL or IP address|http://... or https://...|
+|COLL_GITLAB_IP|URL or IP address|127.0.0.1 or other|
 |COLL_GITLAB_PORT|Port|80 or 443 or other|
 |COLL_GITLAB_USER|User (admin permission)|root or other|
 |COLL_GITLAB_PASS|Password|user_password_test|
