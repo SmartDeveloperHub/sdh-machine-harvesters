@@ -22,7 +22,7 @@ glcollector:
   environment:
     - TERM=xterm
     - COLL_GITLAB_PROT=http
-    - COLL_GITLAB_IP=http://
+    - COLL_GITLAB_IP=
     - COLL_GITLAB_PORT=80
     - COLL_GITLAB_USER=
     - COLL_GITLAB_PASS=
