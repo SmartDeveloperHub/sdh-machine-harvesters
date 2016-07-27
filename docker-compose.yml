@@ -22,14 +22,16 @@ glcollector:
   environment:
     - TERM=xterm
     - COLL_GITLAB_PROT=http
-    - COLL_GITLAB_IP=
+    - COLL_GITLAB_IP=vps164.cesvima.upm.es
     - COLL_GITLAB_PORT=80
-    - COLL_GITLAB_USER=
-    - COLL_GITLAB_PASS=
+    - COLL_GITLAB_USER=root
+    - COLL_GITLAB_PASS=123456sdh
     - COLL_GITLAB_VERIFY_SSL=0
     - COLL_REDIS_IP=glredis
     - COLL_REDIS_PORT=6379
-    - COLL_DELAY=60
+    - COLL_DELAY=3600
+  ports:
+    - "5000:5000"
 
 orgharvester:
   image: smartdeveloperhub/sdh-org-harvester-docker:0.1.0
@@ -60,11 +62,11 @@ ciharvester:
   mem_limit: 1024m
   environment:
     - TERM=xterm
-    - TARGET=
+    - TARGET=http://vps164.cesvima.upm.es:8000/
     - HTTP_PORT=80
     - HTTP_HOST=ciharvester
     - BROKER_PORT=5672
-    - BROKER_HOST=
+    - BROKER_HOST=192.168.99.100
   ports:
     - 8002:80
 
